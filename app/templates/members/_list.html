@@ -1,0 +1,23 @@
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th><th>Email</th><th>Age</th><th>Notes</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for m in members %}
+    <tr>
+      <td>{{ m.name }}</td>
+      <td>{{ m.email }}</td>
+      {% comment %} <td>{{ m.age }}</td> {% endcomment %}
+      <td>{{ m.notes }}</td>
+      <td>
+        <button data-id="{{ m.id }}" class="edit-btn">Edit</button>
+        <button data-id="{{ m.id }}" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No members yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>

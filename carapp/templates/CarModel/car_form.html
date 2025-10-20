@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>{% if car %}Edit{% else %}Add{% endif %} Car</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Title</label><input type="text" name="title" value="{{ car.title|default_if_none:'' }}"><br>
+    <label>Description</label><textarea name="description">{{ car.description|default_if_none:'' }}</textarea><br>
+    <label>Price</label><input type="number" name="price" step="0.01" value="{{ car.price|default_if_none:'' }}"><br>
+    <label>Image URL (or upload file)</label><input type="text" name="image" value="{{ car.image|default_if_none:'' }}"><br>
+    <label>Upload image</label><input type="file" name="image"><br>
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

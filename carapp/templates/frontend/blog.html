@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %}
+<!-- blog section start -->
+      <div class="blog_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <h1 class="blog_taital">FEATURED VEHICLES</h1>
+               </div>
+            </div>
+            <div class="blog_section_2">
+               <div class="row">
+                  <div class="col-md-4">
+                     <div class="blog_img"><img src="{% static 'images/img-4.png' %}"></div>
+                     <div class="btn_main">
+                        <div class="date_text"><a href="#">Price $ 40000.0</a></div>
+                     </div>
+                     <div class="blog_box">
+                        <h3 class="blog_text">Voluptate</h3>
+                        <p class="lorem_text">Commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum </p>
+                     </div>
+                     <div class="read_bt"><a href="#">Read More<span class="arrow_icon"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span></a></div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="blog_img"><img src="{% static 'images/img-5.png' %}"></div>
+                     <div class="btn_main">
+                        <div class="date_text active"><a href="#">Price $ 40000.0</a></div>
+                     </div>
+                     <div class="blog_box">
+                        <h3 class="blog_text">Voluptate</h3>
+                        <p class="lorem_text">Commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum </p>
+                     </div>
+                     <div class="read_bt active"><a href="#">Read More<span class="arrow_icon"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span></a></div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="blog_img"><img src="{% static 'images/img-6.png' %}"></div>
+                     <div class="btn_main">
+                        <div class="date_text"><a href="#">Price $ 40000.0</a></div>
+                     </div>
+                     <div class="blog_box">
+                        <h3 class="blog_text">Voluptate</h3>
+                        <p class="lorem_text">Commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum </p>
+                     </div>
+                     <div class="read_bt"><a href="#">Read More<span class="arrow_icon"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span></a></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- blog section end -->
+{% endblock %}

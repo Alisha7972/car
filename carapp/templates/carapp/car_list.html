@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car List</title>
+</head>
+<body>
+  <h1>Car List</h1>
+  <ul id="car-list">
+    {% for car in cars %}
+      <li>{{ car.brand }} {{ car.name }} ({{ car.year }})</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Add Car</h2>
+  <form id="car-form">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Car Name" required>
+    <input type="text" name="brand" placeholder="Brand" required>
+    <input type="number" name="year" placeholder="Year" required>
+    <button type="submit">Add</button>
+  </form>
+
+  <script>
+    document.getElementById("car-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let formData = new FormData(this);
+
+      fetch("{% url 'add_car' %}", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "X-Requested-With": "XMLHttpRequest"
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (!data.error) {
+          let li = document.createElement("li");
+          li.textContent = `${data.brand} ${data.name} (${data.year})`;
+          document.getElementById("car-list").appendChild(li);
+          this.reset();
+        } else {
+          alert("Error adding car");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

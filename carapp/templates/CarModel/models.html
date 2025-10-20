@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h1>Our Models Cars</h1>
+  {% if user.is_staff %}
+    <a href="{% url 'car_add' %}">➕ Add New Car</a>
+  {% endif %}
+
+  {% for car in cars %}
+    <div class="models_section_2">
+      <div class="row">
+        <div class="col-md-6">
+          {% if car.image %}
+            <div class="models_img"><img src="{{ car.image }}" alt="{{ car.title }}"></div>
+          {% else %}
+            <div class="models_img"><img src="{% static 'images/img-1.png' %}" alt="{{ car.title }}"></div>
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <h3 class="carolo_text"><span class="number_text">{{ forloop.counter|stringformat:"02d" }}</span> {{ car.title }}</h3>
+          <p class="ullamco_text">{{ car.description }}</p>
+          <div class="price_main">
+            <p class="price_text"><span style="color: #fc9d22;">Price</span> ${{ car.price }}</p>
+            {% if user.is_staff %}
+              <a href="{% url 'car_edit' car.id %}">Edit</a> |
+              <form method="post" action="{% url 'car_delete' car.id %}" style="display:inline">
+                {% csrf_token %}
+                <button type="submit" onclick="return confirm('Delete this car?')">Delete</button>
+              </form>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No cars yet.</p>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "members/base.html" %}
+{% load static %}
+{% block content %}
+<h2>Members — AJAX CRUD (Vanilla JS)</h2>
+
+<form id="member-form" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="member_id" id="member-id">
+  <input type="text" name="name" id="id_name" placeholder="Name" required>
+  <input type="email" name="email" id="id_email" placeholder="Email" required>
+  <input type="number" name="age" id="id_age" placeholder="Age">
+  <textarea name="notes" id="id_notes" placeholder="Notes"></textarea>
+  <button type="submit" id="submit-btn">Create</button>
+  <button type="button" id="cancel-btn" style="display:none;">Cancel</button>
+</form>
+
+<div id="errors" style="color:red;"></div>
+
+<div id="members-list">
+  {% include "members/_list.html" %}
+</div>
+
+<script src="{% static 'members/main.js' %}"></script>
+<script>
+  // make CSRF available to JS
+  const csrftoken = "{{ csrf_token }}";
+  function qs(sel){ return document.querySelector(sel); }
+</script>
+{% endblock %}
+
+
+{% comment %} {% extends 'members/base.html' %}
+
+
+{% block content %}
+<h1>Members — AJAX CRUD (Vanilla JS)</h1>
+
+
+<section id="form-section">
+<form id="member-form">
+{% csrf_token %}
+<input type="hidden" id="member-id" name="member_id" value="">
+
+
+<div>
+<label for="id_name">Name</label>
+<input type="text" name="name" id="id_name" required>
+</div>
+
+
+<div>
+<label for="id_email">Email</label>
+<input type="email" name="email" id="id_email">
+</div>
+
+
+<div>
+<label for="id_age">Age</label>
+<input type="number" name="age" id="id_age" min="0">
+</div>
+
+
+<div>
+<label for="id_notes">Notes</label>
+<textarea name="notes" id="id_notes" rows="2"></textarea>
+</div>
+
+
+<div>
+<button type="submit" id="submit-btn">Create</button>
+<button type="button" id="cancel-btn" style="display:none;">Cancel</button>
+</div>
+</form>
+
+
+<div id="form-errors" style="color:red; margin-top:.5rem;"></div>
+</section>
+
+
+<section id="list-section">
+<div id="members-list">
+{% include 'members/_list.html' %}
+</div>
+</section>
+
+
+{% endblock %} {% endcomment %}
