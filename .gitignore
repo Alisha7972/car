@@ -1,0 +1,19 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local database
+db.sqlite3
+
+# Ignore virtual environment
+venv/
+.env/
+
+# Ignore IDE or editor settings
+.vscode/
+.idea/
+
+#Ignore static images folder
+carsapp/static/images/
